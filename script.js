@@ -1,22 +1,12 @@
-var tl = gsap.timeline()
-
-tl.from("h2",{
-    y: -20,
-    opacity: 0,
-    duration: 1,
-    delay: 0.5
-})
-
-tl.from("h4",{
-    y: -20,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.3,
-})
-
-tl.from("h1",{
-    y: 20,
-    duration: 1,
-    opacity: 0,
-    scale: 0.2
+gsap.to("#page2 h1",{
+    transform: "translate(-90%)",
+    scrollTrigger:{
+        trigger:"#page2",
+        scroller: "body",
+        markers: true,
+        start: "top 0%",
+        end: "top -100%",
+        scrub: 2,
+        pin: true,
+    }
 })
