@@ -1,29 +1,31 @@
-let main = document.querySelector("#main");
-let cursor = document.querySelector("#cursor");
-let imageDiv = document.querySelector("#image");
+let tl = gsap.timeline();
+let menu = document.querySelector("#nav i");
+let cross = document.querySelector("#full i ");
 
-main.addEventListener("mousemove", function(dets){
-    gsap.to(cursor,{
-        x: dets.x,
-        y: dets.y,
-        duration: 0.6,
-    })
-})
+tl.to("#full", {
+  right: 0,
+  duration: 0.5,
+});
 
-imageDiv.addEventListener("mouseenter",function(){
-    cursor.innerHTML = "View More"
-    gsap.to(cursor,{
-        scale: 2,
-        backgroundColor: "#ffffff8a",
-    })
-})
+tl.from("#full h4", {
+  x: 150,
+  duration: 0.7,
+  stagger: 0.1,
+  opacity: 0,
+});
 
-imageDiv.addEventListener("mouseleave",function(){
-    cursor.innerHTML = ""
-    gsap.to(cursor,{
-        scale: 1,
-        backgroundColor: "#fff",
-    })
+tl.from("#full i", {
+  opacity: 0,
+});
+
+tl.pause();
+
+menu.addEventListener("click", function () {
+  tl.play();
+});
+
+cross.addEventListener("click", function(){
+    tl.reverse();
 })
 
 
